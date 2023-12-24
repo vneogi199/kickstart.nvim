@@ -243,6 +243,9 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.relativenumber = true
 
+-- Autoscroll when less than 15 lines left
+vim.o.scrolloff = 15
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -296,8 +299,8 @@ vim.o.updatetime = 50
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without writing current text into register" })
-vim.keymap.set("n", "<leader>x", '"_x', { desc = "Delete character but don't copy into register" })
+vim.keymap.set({ 'n', 'v' }, "<leader>p", [["_dP]], { desc = "Paste without writing current text into register" })
+vim.keymap.set({ 'n', 'v' }, "<leader>x", '"_x', { desc = "Delete character but don't copy into register" })
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center screen when scrolling up" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center screen when scrolling down" })
@@ -321,6 +324,10 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Move lines up or down
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move visual selected line down' })
+vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv", { desc = 'Move visual selected line up' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
