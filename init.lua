@@ -88,7 +88,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -346,6 +346,10 @@ vim.keymap.set("n", "N", "Nzz", { desc = "Center screen when going to previous s
 vim.keymap.set("n", "t", "tzz", { desc = "Center screen when going until next search result" })
 vim.keymap.set("n", "T", "Tzz", { desc = "Center screen when going until previous search result" })
 
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the up window" })
 
 -- Remap ESC key in different modes
 vim.keymap.set("i", "kj", "<ESC>", { desc = "Escape when in insert mode" })
