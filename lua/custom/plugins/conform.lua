@@ -5,19 +5,26 @@ return {
     local conform = require('conform');
     conform.setup({
       formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
-        svelte = { "prettier" },
-        css = { "prettier" },
-        html = { "prettier" },
-        json = { "prettier" },
-        yaml = { "prettier" },
-        markdown = { "prettier" },
-        graphql = { "prettier" },
+        javascript = { { "prettierd", "prettier" } },
+        typescript = { { "prettierd", "prettier" } },
+        javascriptreact = { { "prettierd", "prettier" } },
+        typescriptreact = { { "prettierd", "prettier" } },
+        svelte = { { "prettierd", "prettier" } },
+        css = { { "prettierd", "prettier" } },
+        html = { { "prettierd", "prettier" } },
+        json = { { "prettierd", "prettier" } },
+        yaml = { { "prettierd", "prettier" } },
+        markdown = { { "prettierd", "prettier" } },
+        graphql = { { "prettierd", "prettier" } },
         lua = { "stylua" },
+        -- Conform will run multiple formatters sequentially
+        go = { "goimports", "gofmt" },
         -- python = { "isort", "black" },
+        -- Use the "*" filetype to run formatters on all filetypes.
+        ["*"] = { "codespell" },
+        -- Use the "_" filetype to run formatters on filetypes that don't
+        -- have other formatters configured.
+        ["_"] = { "trim_whitespace" },
       },
       format_on_save = {
         lsp_fallback = true,
