@@ -1,3 +1,4 @@
+print 'Hi Vinit, how are you doing today 😇'
 --[[
 
 =====================================================================
@@ -99,6 +100,8 @@ require('lazy').setup({
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
+      'hrsh7th/cmp-buffer', -- source for text in buffer
+
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
@@ -109,6 +112,8 @@ require('lazy').setup({
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
+
+      'onsails/lspkind.nvim', -- vs-code like pictograms
     },
   },
 
@@ -242,6 +247,12 @@ require('lazy').setup({
           return vim.fn.executable 'make' == 1
         end,
       },
+      {
+        'nvim-telescope/telescope-ui-select.nvim',
+        config = function()
+          require('telescope').load_extension 'ui-select'
+        end,
+      },
     },
   },
 
@@ -326,9 +337,8 @@ vim.o.incsearch = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-
 vim.o.updatetime = 50
-
+vim.o.splitright = true
 
 -- [[ Basic Keymaps ]]
 
@@ -336,25 +346,25 @@ vim.o.updatetime = 50
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set({ 'n', 'v' }, "<leader>p", [["_dP]], { desc = "Paste without writing current text into register" })
-vim.keymap.set({ 'n', 'v' }, "<leader>x", '"_x', { desc = "Delete character but don't copy into register" })
+vim.keymap.set({ 'n', 'v' }, '<leader>p', [["_dP]], { desc = 'Paste without writing current text into register' })
+vim.keymap.set({ 'n', 'v' }, '<leader>x', '"_x', { desc = "Delete character but don't copy into register" })
 
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center screen when scrolling up" })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center screen when scrolling down" })
-vim.keymap.set("n", "n", "nzz", { desc = "Center screen when going to next search result" })
-vim.keymap.set("n", "N", "Nzz", { desc = "Center screen when going to previous search result" })
-vim.keymap.set("n", "t", "tzz", { desc = "Center screen when going until next search result" })
-vim.keymap.set("n", "T", "Tzz", { desc = "Center screen when going until previous search result" })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center screen when scrolling up' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Center screen when scrolling down' })
+vim.keymap.set('n', 'n', 'nzz', { desc = 'Center screen when going to next search result' })
+vim.keymap.set('n', 'N', 'Nzz', { desc = 'Center screen when going to previous search result' })
+vim.keymap.set('n', 't', 'tzz', { desc = 'Center screen when going until next search result' })
+vim.keymap.set('n', 'T', 'Tzz', { desc = 'Center screen when going until previous search result' })
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the up window" })
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { desc = 'Go to the left window' })
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = 'Go to the right window' })
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { desc = 'Go to the down window' })
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = 'Go to the up window' })
 
 -- Remap ESC key in different modes
-vim.keymap.set("i", "kj", "<ESC>", { desc = "Escape when in insert mode" })
-vim.keymap.set("v", "kj", "<ESC>", { desc = "Escape when in visual mode" })
-vim.keymap.set("c", "kj", "<ESC>", { desc = "Escape when in change mode" })
+vim.keymap.set('i', 'kj', '<ESC>', { desc = 'Escape when in insert mode' })
+vim.keymap.set('v', 'kj', '<ESC>', { desc = 'Escape when in visual mode' })
+vim.keymap.set('c', 'kj', '<ESC>', { desc = 'Escape when in change mode' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -465,6 +475,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
+  ---@diagnostic disable-next-line: missing-fields
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'bash', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
@@ -559,7 +570,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -595,15 +606,15 @@ require('which-key').register({
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
-require('mason').setup({
+require('mason').setup {
   ui = {
     icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗",
+      package_installed = '✓',
+      package_pending = '➜',
+      package_uninstalled = '✗',
     },
   },
-})
+}
 require('mason-lspconfig').setup()
 
 -- Enable the following language servers
@@ -616,7 +627,14 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {
+    gopls = {
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
   -- pyright = {},
   -- rust_analyzer = {},
   angularls = {},
@@ -647,6 +665,7 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
+  automatic_installation = true,
 }
 
 mason_lspconfig.setup_handlers {
@@ -664,6 +683,7 @@ mason_lspconfig.setup_handlers {
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local lspkind = require 'lspkind'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
@@ -674,14 +694,17 @@ cmp.setup {
     end,
   },
   completion = {
-    completeopt = 'menu,menuone,noinsert',
+    completeopt = 'menu,menuone,noinsert,preview,noselect',
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-e>'] = cmp.mapping.abort(), -- close completion window
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -708,7 +731,16 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' },
     { name = 'path' },
+  },
+  -- configure lspkind for vs-code like pictograms in completion menu
+  ---@diagnostic disable-next-line: missing-fields
+  formatting = {
+    format = lspkind.cmp_format {
+      maxwidth = 50,
+      ellipsis_char = '...',
+    },
   },
 }
 
