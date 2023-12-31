@@ -4,6 +4,28 @@
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+vim.keymap.set({ 'n', 'v' }, '<leader>p', [["_dP]], { desc = 'Paste without writing current text into register' })
+vim.keymap.set({ 'n', 'v' }, '<leader>x', '"_x', { desc = "Delete character but don't copy into register" })
+
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center screen when scrolling up' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Center screen when scrolling down' })
+vim.keymap.set('n', 'n', 'nzz', { desc = 'Center screen when going to next search result' })
+vim.keymap.set('n', 'N', 'Nzz', { desc = 'Center screen when going to previous search result' })
+vim.keymap.set('n', 't', 'tzz', { desc = 'Center screen when going until next search result' })
+vim.keymap.set('n', 'T', 'Tzz', { desc = 'Center screen when going until previous search result' })
+
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { desc = 'Go to the left window' })
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = 'Go to the right window' })
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { desc = 'Go to the down window' })
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = 'Go to the up window' })
+
+-- Remap ESC key in different modes
+vim.keymap.set({ 'i', 'v', 'c' }, 'kj', '<ESC>', { desc = 'Escape when in insert mode' })
+
+-- Move lines up or down
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move visual selected line down' })
+vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv", { desc = 'Move visual selected line up' })
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
