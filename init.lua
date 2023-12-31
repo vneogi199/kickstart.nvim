@@ -1,3 +1,4 @@
+print 'Hi Vinit, how are you doing today 😇'
 --[[
 
 =====================================================================
@@ -52,6 +53,21 @@ require 'lazy-plugins'
 
 -- [[ Setting options ]]
 require 'options'
+
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
+vim.o.smartindent = true
+vim.o.incsearch = true
+
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.o.updatetime = 50
+vim.o.splitright = true
 
 -- [[ Basic Keymaps ]]
 require 'keymaps'
