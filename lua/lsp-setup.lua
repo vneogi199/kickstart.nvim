@@ -98,6 +98,7 @@ local servers = {
   cssls = {},
   emmet_ls = {},
   tsserver = {},
+  eslint = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
 
   lua_ls = {
@@ -106,6 +107,11 @@ local servers = {
       telemetry = { enable = false },
       -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
       -- diagnostics = { disable = { 'missing-fields' } },
+    },
+  },
+  jsonls = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
     },
   },
 }

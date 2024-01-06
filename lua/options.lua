@@ -13,11 +13,11 @@ vim.o.incsearch = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.o.updatetime = 50
-vim.o.splitright = true
+vim.o.splitright = true -- force all vertical splits to go to the right of current window
 
 -- Set highlight on search
-vim.o.hlsearch = false
+-- vim.o.hlsearch = false
+vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 
 -- Make line numbers default
 vim.wo.number = true
@@ -27,7 +27,7 @@ vim.o.relativenumber = true
 vim.o.scrolloff = 15
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = 'a' -- allow the mouse to be used in neovim
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -41,7 +41,7 @@ vim.o.breakindent = true
 vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
+vim.o.ignorecase = true -- ignore case in search patterns
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
@@ -57,4 +57,11 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+vim.opt.backup = false    -- creates a backup file
+vim.opt.cmdheight = 1     -- more space in the neovim command line for displaying messages
+vim.opt.conceallevel = 0  -- so that `` is visible in markdown files
+vim.opt.showtabline = 1   -- always show tabs
+vim.opt.splitbelow = true -- force all horizontal splits to go below current window
+vim.opt.undofile = true   -- enable persistent undo
+vim.opt.cursorline = true -- highlight the current line
 -- vim: ts=2 sts=2 sw=2 et
