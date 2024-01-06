@@ -48,10 +48,25 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
+    { name = 'codeium' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
+  },
+  window = {
+    completion = {
+      border = 'rounded',
+      -- winhighlight = 'Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None',
+      -- col_offset = -3,
+      -- side_padding = 1,
+      -- scrollbar = false,
+      -- scrolloff = 8,
+    },
+    documentation = {
+      border = 'rounded',
+      -- winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder,Search:None',
+    },
   },
   -- configure lspkind for vs-code like pictograms in completion menu
   ---@diagnostic disable-next-line: missing-fields
@@ -59,6 +74,7 @@ cmp.setup {
     format = lspkind.cmp_format {
       maxwidth = 50,
       ellipsis_char = '...',
+      symbol_map = { Codeium = '' },
     },
   },
 }
