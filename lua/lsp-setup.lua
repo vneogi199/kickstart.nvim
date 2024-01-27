@@ -93,7 +93,18 @@ local servers = {
     },
   },
   -- pyright = {},
-  -- rust_analyzer = {},
+  rust_analyzer = {
+    ['rust-analyzer'] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+    settings = {
+      rust = {
+        all_features = true,
+      },
+    },
+  },
   angularls = {},
   cssls = {},
   emmet_ls = {},
