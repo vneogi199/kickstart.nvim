@@ -11,6 +11,10 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center screen when scrolling u
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Center screen when scrolling down' })
 vim.keymap.set('n', 'n', 'nzz', { desc = 'Center screen when going to next search result' })
 vim.keymap.set('n', 'N', 'Nzz', { desc = 'Center screen when going to previous search result' })
+vim.keymap.set('n', '*', '*zz', { desc = 'Center screen when going to next search result under cursor' })
+vim.keymap.set('n', '#', '#zz', { desc = 'Center screen when going to previous search result under cursor' })
+vim.keymap.set('n', 'g*', 'g*zz', { desc = 'Center screen when going to next search result under cursor' })
+vim.keymap.set('n', 'g#', 'g#zz', { desc = 'Center screen when going to previous search result under cursor' })
 vim.keymap.set('n', 't', 'tzz', { desc = 'Center screen when going until next search result' })
 vim.keymap.set('n', 'T', 'Tzz', { desc = 'Center screen when going until previous search result' })
 
@@ -18,6 +22,10 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { desc = 'Go to the left window' }
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = 'Go to the right window' })
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { desc = 'Go to the down window' })
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = 'Go to the up window' })
+
+-- Stay in indent mode
+vim.keymap.set('v', '<', '<gv', { desc = 'Stay in indent mode when indenting outwards' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Stay in indent mode when indenting inwards' })
 
 -- Remap ESC key in different modes
 vim.keymap.set({ 'i', 'v', 'c' }, 'kj', '<ESC>', { desc = 'Escape when in insert mode' })
@@ -35,6 +43,10 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Splits
+vim.keymap.set('n', '<leader>|', ':vsplit<CR>', { desc = 'Open vertical split' })
+vim.keymap.set('n', '<leader>-', ':split<CR>', { desc = 'Open horizontal split' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
