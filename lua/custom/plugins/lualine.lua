@@ -33,6 +33,12 @@ return {
       -- section_separators = '',
     },
     sections = {
+      lualine_c = {
+        {
+          'filename',
+          path = 1,
+        },
+      },
       lualine_y = {
         {
           lsp_name,
