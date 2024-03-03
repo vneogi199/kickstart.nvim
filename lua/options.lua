@@ -1,6 +1,6 @@
 -- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
+-- See `:help vim.opt`
+--  For more options, you can see `:help option-list`
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
@@ -13,55 +13,64 @@ vim.o.incsearch = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.o.splitright = true -- force all vertical splits to go to the right of current window
-
 -- Set highlight on search
--- vim.o.hlsearch = false
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 
 -- Make line numbers default
-vim.wo.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+-- You can also add relative line numbers, for help with jumping.
+--  Experiment for yourself to see if you like it!
+vim.opt.relativenumber = true
 
--- Autoscroll when less than 15 lines left
-vim.o.scrolloff = 15
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.opt.mouse = 'a'
 
--- Enable mouse mode
-vim.o.mouse = 'a' -- allow the mouse to be used in neovim
+-- Don't show the mode, since it's already in status line
+vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true -- ignore case in search patterns
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+-- Configure how new splits should be opened
+vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+-- Sets how neovim will display certain whitespace in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
-vim.opt.backup = false    -- creates a backup file
-vim.opt.cmdheight = 1     -- more space in the neovim command line for displaying messages
-vim.opt.conceallevel = 0  -- so that `` is visible in markdown files
-vim.opt.showtabline = 1   -- always show tabs
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+
+-- Minimal number of screen lines to keep above and below the cursor.
+-- Autoscroll when less than 15 lines left
+vim.opt.scrolloff = 15
+
+vim.opt.backup = false -- creates a backup file
+vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
+vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
+vim.opt.showtabline = 1 -- always show tabs
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
-vim.opt.undofile = true   -- enable persistent undo
+vim.opt.undofile = true -- enable persistent undo
 vim.opt.cursorline = true -- highlight the current line
 -- vim: ts=2 sts=2 sw=2 et
