@@ -142,7 +142,9 @@ return {
             },
           },
         },
-        -- pyright = {},
+        pyright = {},
+        black = {},
+        debugpy = {},
         rust_analyzer = {
           ['rust-analyzer'] = {
             cargo = {

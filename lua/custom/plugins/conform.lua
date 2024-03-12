@@ -18,7 +18,7 @@ return {
         graphql = { { 'prettierd', 'prettier' } },
         lua = { 'stylua' },
         go = { 'goimports' },
-        -- python = { "isort", "black" },
+        -- python = { 'isort', 'black' },
         -- Use the "*" filetype to run formatters on all filetypes.
         ['*'] = { 'codespell' },
         -- Use the "_" filetype to run formatters on filetypes that don't

@@ -7,6 +7,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>p', [["_dP]], { desc = 'Paste without writing current text into register' })
 vim.keymap.set({ 'n', 'v' }, '<leader>x', '"_x', { desc = "Delete character but don't copy into register" })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Delete without writing current text into register' })
 
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center screen when scrolling up' })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Center screen when scrolling down' })
