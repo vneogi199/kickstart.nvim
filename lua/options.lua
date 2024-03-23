@@ -76,4 +76,8 @@ vim.opt.showtabline = 1 -- always show tabs
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.cursorline = true -- highlight the current line
+
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.fn.has 'win32' ~= 0
+vim.env.PATH = vim.fn.stdpath 'data' .. '/mason/bin' .. (is_windows and ';' or ':') .. vim.env.PATH
 -- vim: ts=2 sts=2 sw=2 et
