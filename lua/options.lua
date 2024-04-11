@@ -6,7 +6,9 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
+vim.o.autoindent = true
 vim.o.smartindent = true
+vim.o.smarttab = true
 vim.o.incsearch = true
 
 -- disable netrw at the very start of your init.lua
@@ -77,6 +79,7 @@ vim.opt.splitbelow = true -- force all horizontal splits to go below current win
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.cursorline = true -- highlight the current line
 
+vim.o.termguicolors = true
 -- add binaries installed by mason.nvim to path
 local is_windows = vim.fn.has 'win32' ~= 0
 vim.env.PATH = vim.fn.stdpath 'data' .. '/mason/bin' .. (is_windows and ';' or ':') .. vim.env.PATH
