@@ -105,17 +105,17 @@ return {
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.documentHighlightProvider then
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              buffer = event.buf,
-              callback = vim.lsp.buf.document_highlight,
-            })
-
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              callback = vim.lsp.buf.clear_references,
-            })
-          end
+          -- if client and client.server_capabilities.documentHighlightProvider then
+          --   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+          --     buffer = event.buf,
+          --     callback = vim.lsp.buf.document_highlight,
+          --   })
+          --
+          --   vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+          --     buffer = event.buf,
+          --     callback = vim.lsp.buf.clear_references,
+          --   })
+          -- end
         end,
       })
 
@@ -235,6 +235,32 @@ return {
           end,
         },
       }
+      local function lspSymbol(name, icon)
+        local hl = 'DiagnosticSign' .. name
+        vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+      end
+
+      lspSymbol('Error', '󰅙')
+      lspSymbol('Info', '󰋼')
+      lspSymbol('Hint', '󰌵')
+      lspSymbol('Warn', '')
+      vim.diagnostic.config {
+        virtual_text = {
+          prefix = '',
+        },
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+      }
+      --  LspInfo window borders
+      local win = require 'lspconfig.ui.windows'
+      local _default_opts = win.default_opts
+
+      win.default_opts = function(options)
+        local opts = _default_opts(options)
+        opts.border = 'single'
+        return opts
+      end
     end,
   },
 }
