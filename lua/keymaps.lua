@@ -73,6 +73,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<leader>cn', '<cmd>cnext<CR>zz', { desc = 'Next in quickfix list' })
+vim.keymap.set('n', '<leader>cp', '<cmd>cprev<CR>zz', { desc = 'Previous in quickfix list' })
+vim.keymap.set('n', '<leader>ln', '<cmd>lnext<CR>zz', { desc = 'Next in location list' })
+vim.keymap.set('n', '<leader>lp', '<cmd>lprev<CR>zz', { desc = 'Previous in location list' })
+
 vim.keymap.set('n', 'Q', '@qj')
 vim.keymap.set('x', 'Q', ':norm @q<CR>')
 
