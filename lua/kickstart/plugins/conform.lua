@@ -43,7 +43,6 @@ return {
         yaml = { { 'prettierd', 'prettier' } },
         markdown = { { 'prettierd', 'prettier' } },
         graphql = { { 'prettierd', 'prettier' } },
-        lua = { 'stylua' },
         go = { 'goimports' },
         -- python = { 'isort', 'black' },
         -- Use the "*" filetype to run formatters on all filetypes.
