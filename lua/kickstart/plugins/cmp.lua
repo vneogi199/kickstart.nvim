@@ -154,7 +154,20 @@ return {
             maxwidth = 50,
             ellipsis_char = '...',
             symbol_map = { Codeium = '' },
+            before = function(entry, vim_item)
+              vim_item = require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
+              return vim_item
+            end,
           },
+          -- format = function(entry, vim_item)
+          --   lspkind.cmp_format {
+          --     maxwidth = 50,
+          --     ellipsis_char = '...',
+          --     symbol_map = { Codeium = '' },
+          --   }
+          --   require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
+          --   return vim_item
+          -- end,
         },
       }
     end,
