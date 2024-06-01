@@ -13,6 +13,12 @@ return {
     'rcarriga/nvim-notify',
   },
   config = function()
+    require('notify').setup {
+      minimum_width = 30,
+      timeout = 2500,
+      max_width = 150,
+      max_height = 250,
+    }
     require('noice').setup {
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**

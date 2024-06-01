@@ -13,6 +13,7 @@ return {
         formatting.prettier,
         formatting.goimports,
         formatting.black,
+        formatting.goimports,
         -- diagnostics.eslint,
         -- diagnostics.flake8,
 
