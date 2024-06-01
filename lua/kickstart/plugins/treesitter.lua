@@ -21,8 +21,11 @@ return {
         'tsx',
         'javascript',
         'typescript',
+        'tsx',
         'vim',
         'vimdoc',
+        'json',
+        'tmux',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
