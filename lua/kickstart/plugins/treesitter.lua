@@ -17,6 +17,7 @@ return {
         'markdown',
         'markdown_inline',
         'python',
+        'query',
         'regex',
         'rust',
         'tsx',
