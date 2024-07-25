@@ -5,7 +5,8 @@
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set('n', '<leader>b', '<cmd>enew<CR>', { desc = 'Open new buffer' })
+vim.keymap.set('n', '<leader>bn', '<cmd>enew<CR>', { desc = 'Open new buffer' })
+vim.keymap.set('n', '<leader>bx', '<cmd>bdelete<CR>', { desc = 'Close current buffer' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>p', [["_dP]], { desc = 'Paste without writing current text into register' })
 vim.keymap.set({ 'n', 'v' }, '<leader>x', '"_x', { desc = "Delete character but don't copy into register" })
