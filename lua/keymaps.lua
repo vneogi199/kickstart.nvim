@@ -29,6 +29,7 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Stay in indent mode when indenting inw
 
 -- Remap ESC key in different modes
 vim.keymap.set({ 'i', 'v', 'c' }, 'kj', '<ESC>', { desc = 'Escape when in insert mode' })
+vim.keymap.set({ 'i', 'v', 'c' }, '<C-c>', '<ESC>', { desc = 'Escape when in insert mode' })
 
 -- Move lines up or down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move visual selected line down' })

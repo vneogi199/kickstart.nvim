@@ -25,7 +25,7 @@ return {
             config = function()
               -- vscode format
               require('luasnip.loaders.from_vscode').lazy_load { exclude = vim.g.vscode_snippets_exclude or {} }
-              require('luasnip.loaders.from_vscode').lazy_load { paths = 'your path!' }
+              -- require('luasnip.loaders.from_vscode').lazy_load { paths = 'your path!' }
               require('luasnip.loaders.from_vscode').lazy_load { paths = vim.g.vscode_snippets_path or '' }
 
               -- snipmate format
@@ -138,6 +138,7 @@ return {
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
             group_index = 0,
           },
+          { name = 'supermaven' },
           { name = 'codeium' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
@@ -164,7 +165,7 @@ return {
           format = lspkind.cmp_format {
             maxwidth = 50,
             ellipsis_char = '...',
-            symbol_map = { Codeium = '' },
+            symbol_map = { Codeium = '', Supermaven = '' },
             before = function(entry, vim_item)
               vim_item = require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
               return vim_item
@@ -181,6 +182,7 @@ return {
           -- end,
         },
       }
+      vim.api.nvim_set_hl(0, 'CmpItemKindSupermaven', { fg = '#6CC644' })
     end,
   },
 }
