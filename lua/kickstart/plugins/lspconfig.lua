@@ -176,9 +176,9 @@ return {
             },
           },
         },
-        pyright = {},
-        black = {},
-        debugpy = {},
+        -- pyright = {},
+        -- black = {},
+        -- debugpy = {},
         rust_analyzer = {
           ['rust-analyzer'] = {
             cargo = {
@@ -191,7 +191,7 @@ return {
             },
           },
         },
-        angularls = {},
+        -- angularls = {},
         cssls = {},
         emmet_ls = {},
         tsserver = {},
